@@ -12,4 +12,5 @@ blocks:
           commands:
             - checkout
             - sem-version java 1.8
+            - cd backend/x-lanche
             - mvn -B package --file pom.xml
