@@ -14,3 +14,9 @@ blocks:
             - sem-version java 11
             - cd backend/x-lanche
             - mvn -B package --file pom.xml
+  - name: 'Maven:Test'
+    task:
+      jobs:
+        - name: Test
+          commands:
+            - mvn clean install
