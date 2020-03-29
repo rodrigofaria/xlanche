@@ -1,0 +1,103 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <h1>X-LANCHE</h1>
+</div>
+
+<div class="content" role="main">
+
+  <!-- Lunch -->
+  <div class="container">
+    <h2>Escolha seu lanche:</h2>
+
+    <div class="card-container">
+      <div *ngFor="let lun of lunchs" [className]="lun.selected ? 'card selected' : 'card'" (click)="selectLunch(lun)">
+        <a>
+          <img src="../assets/hamburger.png">
+          <span>{{ lun.name }}</span>
+        </a>
+
+        <ul>
+          <li *ngFor="let ing of lun.ingredients">
+            {{ ing.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ingredient -->
+  <div class="container">
+    <h2>Adicione + ingredientes:</h2>
+
+    <div class="card-container">
+      <div *ngFor="let ing of ingredients" ngClass="card">
+        <a>
+          <span>{{ ing.name }}</span>
+        </a>
+        <div class="counters">
+          <span (click)="removeIngredient(ing)">-</span>
+          <span>{{ ing.counter }}</span>
+          <span (click)="addIngredient(ing)">+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Promotions -->
+  <div class="container">
+    <h2>Conheça nossas promoções:</h2>
+
+    <div class="card-container">
+      <div *ngFor="let pro of promotions" ngClass="card">
+        <a>
+          <span>{{ pro.name }}</span>
+        </a>
+        <p>
+          {{ pro.rule }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Price -->
+  <div class="container" *ngIf="selectedLunch">
+    <h2>Preço Final:</h2>
+
+    <div class="card-container">
+      <div class="card">
+        <p>Lanche Selecionado:</p>
+        <a>
+          <img src="../assets/hamburger.png">
+          <span>{{ selectedLunch.name }}</span>
+        </a>
+
+        <ul>
+          <li *ngFor="let ing of selectedLunch.ingredients">
+            {{ ing.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p>Ingredientes adicionados:</p>
+        
+        <p *ngIf="listIngredientsAdded().length === 0">Nenhum ingrediente adicionado ainda!</p>
+
+        <ul>
+          <li *ngFor="let ing of listIngredientsAdded()">
+            {{ ing.name }} - {{ ing.counter }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p>Preço:</p>
+        
+        <input type="button" value="Calcular" class="btnCalc" (click)="calcPrice()">
+        
+        <p>{{ selectedLunch.price | currency }}</p>
+
+      </div>
+    </div>
+  </div>
+</div>
