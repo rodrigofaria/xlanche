@@ -11,6 +11,6 @@ blocks:
         - name: Build
           commands:
             - checkout
-            - sem-version java 1.8
+            - sem-version java 11
             - cd backend/x-lanche
             - mvn -B package --file pom.xml
