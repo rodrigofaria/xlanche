@@ -13,10 +13,11 @@ blocks:
             - checkout
             - sem-version java 11
             - cd backend/x-lanche
-            - mvn -B package --file pom.xml
+            - mvn -B package -DskipTests --file pom.xml
   - name: 'Maven:Test'
     task:
       jobs:
         - name: Test
           commands:
+            - cd backend/x-lanche
             - mvn clean install
