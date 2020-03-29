@@ -23,4 +23,5 @@ blocks:
       prologue:
         commands:
           - checkout
+          - sem-version java 11
           - cd backend/x-lanche
