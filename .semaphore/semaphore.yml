@@ -19,5 +19,8 @@ blocks:
       jobs:
         - name: Test
           commands:
-            - cd backend/x-lanche
-            - mvn clean install
+            - mvn test
+      prologue:
+        commands:
+          - checkout
+          - cd backend/x-lanche
