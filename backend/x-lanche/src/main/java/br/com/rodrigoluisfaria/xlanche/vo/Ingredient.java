@@ -23,6 +23,10 @@ public class Ingredient {
 	public int getCounter() {
 		return counter;
 	}
+	
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
 
 	@Override
 	public String toString() {
