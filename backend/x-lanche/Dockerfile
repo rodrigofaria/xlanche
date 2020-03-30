@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-alpine
+FROM openjdk:11.0.6-jdk-buster
 ARG ENVIRONMENT
 ENV ENVIRONMENT ${ENVIRONMENT}
 COPY target/*.jar app.jar
