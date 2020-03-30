@@ -6,7 +6,25 @@ blocks:
       jobs:
         - name: Build and deploy
           commands:
-            - echo "job 1"
+            - sem-version java 11
+            - cd backend/x-lanche
+            - mvn -q package -Dmaven.test.skip=true
+            - echo "$DOCKER_PASSWORD" | docker login  --username "$DOCKER_USERNAME" --password-stdin
+            - 'docker pull "$DOCKER_USERNAME"/xlanche:latest || true'
+            - 'docker build --cache-from "$DOCKER_USERNAME"/xlanche:latest --build-arg ENVIRONMENT="${ENVIRONMENT}" -t "$DOCKER_USERNAME"/xlanche:latest .'
+            - 'docker push "$DOCKER_USERNAME"/xlanche:latest'
+      secrets:
+        - name: dockerhub
+      env_vars:
+        - name: MAVEN_OPTS
+          value: '-Dmaven.repo.local=.m2'
+        - name: ENVIRONMENT
+          value: dev
+      prologue:
+        commands:
+          - checkout
+          - 'cache restore spring-pipeline-build-$SEMAPHORE_GIT_BRANCH-$(checksum pom.xml),spring-pipeline-build-$SEMAPHORE_GIT_BRANCH,spring-pipeline-build'
+          - cache restore
 agent:
   machine:
     type: e1-standard-2
