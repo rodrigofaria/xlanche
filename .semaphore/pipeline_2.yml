@@ -1,10 +1,10 @@
 version: v1.0
-name: Pipeline 2
+name: Docker Build
 blocks:
-  - name: 'Block #1'
+  - name: Build
     task:
       jobs:
-        - name: 'Job #1'
+        - name: Build and deploy
           commands:
             - echo "job 1"
 agent:
