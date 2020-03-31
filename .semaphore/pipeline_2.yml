@@ -23,7 +23,6 @@ blocks:
       prologue:
         commands:
           - checkout
-          - 'cache restore spring-pipeline-build-$SEMAPHORE_GIT_BRANCH-$(checksum pom.xml),spring-pipeline-build-$SEMAPHORE_GIT_BRANCH,spring-pipeline-build'
           - cache restore
 agent:
   machine:
