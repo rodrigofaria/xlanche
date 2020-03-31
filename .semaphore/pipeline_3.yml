@@ -16,7 +16,8 @@ blocks:
           - npm install --save-dev @angular-devkit/build-angular
           - npm install --save-dev @angular/compiler-cli
           - npm install --save-dev @angular/compiler
-          - npm update
+          - npm update -g
+          - npm cache clean --force
 agent:
   machine:
     type: e1-standard-2
