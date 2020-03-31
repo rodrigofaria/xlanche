@@ -13,7 +13,8 @@ blocks:
           - checkout
           - nvm install 12.16.1
           - npm install -g @angular/cli
-          - npm install -g @angular-devkit/build-angular
+          - npm install --save-dev @angular-devkit/build-angular
+          - npm update
 agent:
   machine:
     type: e1-standard-2
