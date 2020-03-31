@@ -12,6 +12,7 @@ blocks:
       prologue:
         commands:
           - checkout
+          - nvm install 10.10.0
 agent:
   machine:
     type: e1-standard-2
