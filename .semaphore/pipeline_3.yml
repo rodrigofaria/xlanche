@@ -12,10 +12,11 @@ blocks:
         commands:
           - checkout
           - nvm install 12.16.1
-          - npm install -g @angular/cli
           - npm install --save-dev @angular-devkit/build-angular
           - npm install --save-dev @angular/compiler-cli
           - npm install --save-dev @angular/compiler
+          - npm install --save-dev @angular/core
+          - npm install -g @angular/cli
           - npm update
 agent:
   machine:
