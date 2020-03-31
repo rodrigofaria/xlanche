@@ -6,13 +6,13 @@ blocks:
       jobs:
         - name: Build and deploy
           commands:
-            - echo "job 1"
             - cd frontend/xlanche
             - ng build --prod
       prologue:
         commands:
           - checkout
           - nvm install 10.10.0
+          - npm install -g @angular/cli
 agent:
   machine:
     type: e1-standard-2
