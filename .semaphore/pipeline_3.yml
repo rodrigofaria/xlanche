@@ -11,7 +11,7 @@ blocks:
       prologue:
         commands:
           - checkout
-          - nvm install 10.13
+          - nvm install 12.16.1
           - npm install -g @angular/cli
 agent:
   machine:
