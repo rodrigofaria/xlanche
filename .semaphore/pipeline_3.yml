@@ -7,7 +7,7 @@ blocks:
         - name: Build and deploy
           commands:
             - cd frontend/xlanche
-            - ng build --prod
+            - ng build
       prologue:
         commands:
           - checkout
